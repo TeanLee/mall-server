@@ -3,3 +3,12 @@ spring:
     url: jdbc:mysql://localhost:3306/first-database
     username: root
     password: 123456
+
+
+mybatis:
+  # 可以不写全局配置文件，所有全局配置文件的配置都放在configuration配置项中了。
+  # config-location: classpath:mybatis/mybatis-config.xml  #全局配置文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
+  # mapUnderscoreToCamelCase 是开启驼峰命名。在官方文档的 setting 中可以看到。（目的：数据库的下划线可以对应类中的驼峰）
+  configuration:
+    map-underscore-to-camel-case: true
