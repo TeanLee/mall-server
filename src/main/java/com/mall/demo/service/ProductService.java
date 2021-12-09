@@ -15,4 +15,7 @@ public class ProductService {
     public List<Product> getProducts() {
         return productMapper.getProducts();
     }
+    public List<Product> getProductsByCategoryId(int id) {
+        return productMapper.getProductsByCategoryId(id);
+    }
 }

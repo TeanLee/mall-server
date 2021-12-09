@@ -19,4 +19,7 @@
         <result column="categoryId" property="categoryId" />
         <result column="unit" property="unit" />
     </resultMap>
+    <select id="getProductsByCategoryId" resultMap="allProduct">
+        SELECT * FROM mall.product where categoryId = #{id};
+    </select>
 </mapper>
