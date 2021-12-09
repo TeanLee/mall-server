@@ -1,7 +1,14 @@
 package com.mall.demo.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor //全参构造函数
+@NoArgsConstructor  //无参构造函数
 public class Product {
     private int productId;
+    private String title;
+    private String subTitle;
     private String banner;
     private double price;
     private double oldPrice;
@@ -63,5 +70,21 @@ public class Product {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 }

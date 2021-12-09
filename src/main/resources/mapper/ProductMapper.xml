@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.demo.mapper.ProductMapper">
+
+
+    <!--    id 要和 mapper 中声明的方法名一致，返回值类型也要和声明的类型保持一致-->
+    <select id="getProducts" resultMap="allProduct">
+        SELECT * FROM mall.product;
+    </select>
+    <resultMap id="allProduct" type="com.mall.demo.bean.Product">
+        <id column="productId" property="productId" />
+        <result column="title" property="title" />
+        <result column="subTitle" property="subTitle" />
+        <result column="banner" property="banner" />
+        <result column="price" property="price" />
+        <result column="oldPrice" property="oldPrice" />
+        <result column="categoryId" property="categoryId" />
+        <result column="unit" property="unit" />
+    </resultMap>
+</mapper>
