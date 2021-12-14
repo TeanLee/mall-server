@@ -8,6 +8,13 @@ public class User {
     private String username;
     private String address;
 
+    public User() {
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
+
     public int getUid() {
         return uid;
     }

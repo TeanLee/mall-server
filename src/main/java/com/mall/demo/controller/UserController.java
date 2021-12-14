@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @RequestMapping("/user")
 @Controller
 public class UserController {
@@ -24,10 +23,12 @@ public class UserController {
     @ResponseBody
     @PostMapping("/login")
     public void postUsername(@RequestParam("username") String username) {
-        user.setUsername(user.getUsername());
+        user.setUsername(username);
         // 数据库中查询表，是否存在当前用户，若不存在，则新建用户（插入新用户）
         User user = userService.getUserByUsername(username);
-        log.info("username：" + user.getUsername());
+        if (user == null) {
+            userService.addUser(username);
+        }
     }
 
     @ResponseBody

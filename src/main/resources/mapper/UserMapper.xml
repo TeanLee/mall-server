@@ -17,4 +17,8 @@
     <select id="getUserByUsername" resultMap="allUser">
         SELECT * FROM mall.user where username=#{username};
     </select>
+    <insert id="addUser" parameterType="java.lang.String" useGeneratedKeys="true">
+        insert into mall.user(username) values(#{username})
+    </insert>
+
 </mapper>
