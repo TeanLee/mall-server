@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RequestMapping("/shopping-cart")
 @Controller
@@ -25,6 +27,24 @@ public class ShoppingCartController {
         ShoppingCart shoppingCart = shoppingCartService.getByProductId(productId);
         if (shoppingCart == null) shoppingCartService.add(productId);
         else shoppingCartService.updateCount(productId);
+    }
+
+    @ResponseBody
+    @PostMapping("/cut")
+    public void cutProduct(int productId) {
+        shoppingCartService.cutCount(productId);
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delete")
+    public void deleteByProductId(int productId) {
+        shoppingCartService.deleteByProductId(productId);
+    }
+
+    @ResponseBody
+    @GetMapping("/all")
+    public List<ShoppingCart> getShoppingCartByUid() {
+        return shoppingCartService.getShoppingCartByUid();
     }
 
     @ResponseBody

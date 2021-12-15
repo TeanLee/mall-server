@@ -26,4 +26,13 @@
     <update id="updateCount">
         update mall.ShoppingCart set count=count+1 where productId=#{productId} and uid=#{uid};
     </update>
+    <update id="cutCount">
+        update mall.ShoppingCart set count=count-1 where productId=#{productId} and uid=#{uid};
+    </update>
+    <delete id="deleteByProductId">
+        delete FROM mall.ShoppingCart where productId=#{productId} and uid=#{uid};
+    </delete>
+    <select id="getShoppingCartByUid" resultType="java.util.LinkedHashMap">
+        SELECT * FROM mall.ShoppingCart s,mall.product p where s.productId=p.productId and uid=#{uid};
+    </select>
 </mapper>
