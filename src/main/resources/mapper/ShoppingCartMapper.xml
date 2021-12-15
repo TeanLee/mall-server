@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.demo.mapper.ShoppingCartMapper">
+
+
+    <!--    id 要和 mapper 中声明的方法名一致，返回值类型也要和声明的类型保持一致-->
+    <select id="getShoppingCart" resultMap="allShoppingCart">
+        SELECT * FROM mall.ShoppingCart;
+    </select>
+    <resultMap id="allShoppingCart" type="com.mall.demo.bean.ShoppingCart">
+        <id column="cartId" property="cartId" />
+        <result column="uid" property="uid" />
+        <result column="productId" property="productId" />
+        <result column="count" property="count" />
+        <result column="hasBought" property="hasBought" />
+    </resultMap>
+    <select id="getByProductId" resultMap="allShoppingCart">
+        SELECT * FROM mall.ShoppingCart where productId=#{productId} and uid=#{uid};
+<!--        SELECT * FROM mall.ShoppingCart where productId=#{productId};-->
+    </select>
+    <insert id="add" useGeneratedKeys="true">
+        insert into mall.ShoppingCart(uid, productId, count) values(#{uid}, #{productId}, 1)
+    </insert>
+    <update id="updateCount">
+        update mall.ShoppingCart set count=count+1 where productId=#{productId} and uid=#{uid};
+    </update>
+</mapper>
