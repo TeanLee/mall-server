@@ -23,5 +23,8 @@
     <update id="setAddress">
         update mall.user set address=#{address} where username=#{username};
     </update>
+    <select id="getUserInfo" resultType="com.mall.demo.bean.User">
+        SELECT * FROM mall.user where username=#{username};
+    </select>
 
 </mapper>

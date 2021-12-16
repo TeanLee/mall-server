@@ -35,9 +35,16 @@ public class UserController {
     @ResponseBody
     @PostMapping("/set-address")
     public void setAddress(@RequestParam("address") String address) {
-        log.info("address：" + address);
         user.setAddress(address);
         userService.setAddress(address);
+    }
+
+    @ResponseBody
+    @GetMapping("/info")
+    public User getUserInfo() {
+        User user = userService.getUserInfo();
+        log.info(String.valueOf(user));
+        return user;
     }
 
     @ResponseBody

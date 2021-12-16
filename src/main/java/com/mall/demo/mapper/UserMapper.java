@@ -12,4 +12,5 @@ public interface UserMapper {
     public List<User> getUsers();
     public void addUser(String user);
     public void setAddress(@Param("address") String address, @Param("username") String username);
+    public User getUserInfo(@Param("username") String username);
 }

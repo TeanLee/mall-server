@@ -33,4 +33,10 @@ public class UserService {
         log.info("username：" + username);
         userMapper.setAddress(address, username);
     }
+
+    public User getUserInfo() {
+        String username = user.getUsername();
+        log.info("username：" + username);
+        return userMapper.getUserInfo(username);
+    }
 }
