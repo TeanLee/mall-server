@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RequestMapping("/user")
 @Controller
 public class UserController {
@@ -29,6 +30,14 @@ public class UserController {
         if (user == null) {
             userService.addUser(username);
         }
+    }
+
+    @ResponseBody
+    @PostMapping("/set-address")
+    public void setAddress(@RequestParam("address") String address) {
+        log.info("address：" + address);
+        user.setAddress(address);
+        userService.setAddress(address);
     }
 
     @ResponseBody

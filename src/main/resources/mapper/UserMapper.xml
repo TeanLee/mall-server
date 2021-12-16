@@ -20,5 +20,8 @@
     <insert id="addUser" parameterType="java.lang.String" useGeneratedKeys="true">
         insert into mall.user(username) values(#{username})
     </insert>
+    <update id="setAddress">
+        update mall.user set address=#{address} where username=#{username};
+    </update>
 
 </mapper>

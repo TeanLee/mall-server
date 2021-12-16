@@ -1,12 +1,15 @@
 package com.mall.demo.bean;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
+@Data
 public class User {
     private int uid;
     private String username;
     private String address;
+    private String phone;
 
     public User() {
     }
@@ -37,5 +40,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
