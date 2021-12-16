@@ -28,15 +28,13 @@ public class UserService {
         userMapper.addUser(user);
     }
 
-    public void setAddress(String address) {
+    public void setInfo(String address, String phone, String receiver) {
         String username = user.getUsername();
-        log.info("username：" + username);
-        userMapper.setAddress(address, username);
+        userMapper.setInfo(username, address, phone, receiver);
     }
 
     public User getUserInfo() {
         String username = user.getUsername();
-        log.info("username：" + username);
         return userMapper.getUserInfo(username);
     }
 }

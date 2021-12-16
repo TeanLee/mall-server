@@ -3,6 +3,8 @@ package com.mall.demo.bean;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Data
 public class User {
@@ -10,6 +12,7 @@ public class User {
     private String username;
     private String address;
     private String phone;
+    private String receiver;
 
     public User() {
     }

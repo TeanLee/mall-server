@@ -13,6 +13,8 @@
         <id column="uid" property="uid" />
         <result column="username" property="username" />
         <result column="address" property="address" />
+        <result column="phone" property="phone" />
+        <result column="receiver" property="receiver" />
     </resultMap>
     <select id="getUserByUsername" resultMap="allUser">
         SELECT * FROM mall.user where username=#{username};
@@ -20,8 +22,8 @@
     <insert id="addUser" parameterType="java.lang.String" useGeneratedKeys="true">
         insert into mall.user(username) values(#{username})
     </insert>
-    <update id="setAddress">
-        update mall.user set address=#{address} where username=#{username};
+    <update id="setInfo">
+        update mall.user set address=#{address}, phone=#{phone}, receiver=#{receiver} where username=#{username};
     </update>
     <select id="getUserInfo" resultType="com.mall.demo.bean.User">
         SELECT * FROM mall.user where username=#{username};

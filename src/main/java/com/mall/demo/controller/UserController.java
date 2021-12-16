@@ -33,10 +33,12 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping("/set-address")
-    public void setAddress(@RequestParam("address") String address) {
+    @PostMapping("/set-info")
+    public void setInfo(@RequestParam("address") String address, @RequestParam("phone") String phone, @RequestParam("receiver") String receiver) {
         user.setAddress(address);
-        userService.setAddress(address);
+        user.setPhone(phone);
+        user.setReceiver(receiver);
+        userService.setInfo(address, phone, receiver);
     }
 
     @ResponseBody
