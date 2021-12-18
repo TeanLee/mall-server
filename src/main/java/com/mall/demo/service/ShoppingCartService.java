@@ -40,6 +40,7 @@ public class ShoppingCartService {
 
     public void deleteByProductId(int productId) {
         int uid = user.getUid();
+        log.info("deleteByProductId：" + productId);
         shoppingCartMapper.deleteByProductId(productId, uid);
     }
 
