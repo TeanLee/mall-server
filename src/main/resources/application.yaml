@@ -3,6 +3,9 @@ spring:
     url: jdbc:mysql://localhost:3306/first-database
     username: root
     password: 123456
+    tomcat:
+      max-http-header-size: 10240000
+      max-http-post-size: 10240000
 
 
 mybatis:
