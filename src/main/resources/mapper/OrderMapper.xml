@@ -25,4 +25,8 @@
     <select id="getCategoryById" resultType="com.mall.demo.bean.Category">
         SELECT * FROM mall.category where categoryId=#{id};
     </select>
+
+    <update id="updateStatus">
+        update mall.order set status=#{status} where uid=#{uid} and orderId=#{orderId}
+    </update>
 </mapper>

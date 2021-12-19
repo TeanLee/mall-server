@@ -58,6 +58,17 @@ public class OrderController {
     @ResponseBody
     @GetMapping("/list-detail")
     public List listTest(@RequestParam(value = "status", required = false) Integer status) {
-        return orderService.orderList();
+        return orderService.orderList(status);
+    }
+
+    /**
+     * 修改订单状态（0:待付款；1:待配送；2:待评价）
+     * @param orderId
+     * @param status
+     */
+    @ResponseBody
+    @PostMapping("/update-status")
+    public void updateStatus(@RequestParam("orderId") Integer orderId, @RequestParam("status") Integer status) {
+        orderService.updateStatus(orderId, status);
     }
 }

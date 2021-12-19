@@ -43,10 +43,10 @@ public class OrderService {
      * 解析出来之后需要在商品表中查询对应的商品详情，返回由商品详情+数量组成的 Map。在订单页面进行展示。
      * @return
      */
-    public List orderList() {
+    public List orderList(Integer status) {
         int uid = user.getUid();
         // 获取所有符合条件的订单（当前用户 + 付款状态）
-        List orders = orderMapper.list(uid, null);
+        List orders = orderMapper.list(uid, status);
         log.info("orders：" + orders);
 
 
@@ -55,10 +55,7 @@ public class OrderService {
         for (int i = 0; i < orders.size(); i++) {
             Order order = (Order) orders.get(i);
 
-            log.info("order.getOrderItem()：" + order.getOrderItem());
             JSONArray arrayObj = new JSONArray(order.getOrderItem());
-
-            log.info(String.valueOf(arrayObj.length()));
 
             List list = new ArrayList();
 
@@ -71,6 +68,7 @@ public class OrderService {
                 Product product = productMapper.getProductById(Integer.valueOf(productId));
                 map.put("count", count);
                 map.put("product", product);
+                map.put("orderId", order.getOrderId());
                 list.add(map);
             }
 
@@ -78,5 +76,11 @@ public class OrderService {
         }
 
         return ordersList;
+    }
+
+
+    public void updateStatus(int orderId, int status) {
+        int uid = user.getUid();
+        orderMapper.updateStatus(orderId, status, uid);
     }
 }
