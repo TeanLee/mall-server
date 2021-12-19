@@ -55,6 +55,8 @@ public class OrderService {
         for (int i = 0; i < orders.size(); i++) {
             Order order = (Order) orders.get(i);
 
+            if (order.getOrderItem().equals("[]")) break;
+
             JSONArray arrayObj = new JSONArray(order.getOrderItem());
 
             List list = new ArrayList();
