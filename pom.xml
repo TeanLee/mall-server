@@ -49,6 +49,16 @@
 			<scope>test</scope>
 		</dependency>
 
+
+
+
+		<!--		将 String 字符串转成 JSON 的依赖-->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20201115</version>
+		</dependency>
+
 		<!--		数据库相关-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

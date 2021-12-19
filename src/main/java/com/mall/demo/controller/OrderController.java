@@ -41,9 +41,23 @@ public class OrderController {
         }
     }
 
+
+    /**
+     * 查询当前用户的所有订单信息（商品详情+商品数量），如果不传参数，表示查询所有订单。
+     * 否则：订单状态 status（0:待付款；1:待配送；2:待评价）
+     * @param status
+     * @return
+     */
     @ResponseBody
     @GetMapping("/list")
-    public List<Order> list() {
-        return orderService.list();
+    public List<Order> list(@RequestParam(value = "status", required = false) Integer status) {
+        log.info("status：" + status);
+        return orderService.list(status);
+    }
+
+    @ResponseBody
+    @GetMapping("/list-detail")
+    public List listTest(@RequestParam(value = "status", required = false) Integer status) {
+        return orderService.orderList();
     }
 }

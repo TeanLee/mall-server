@@ -9,5 +9,5 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     public void add(@Param("orderItem") String orderItem, @Param("orderTime") String orderTime, @Param("uid") int uid, @Param("status") int status);
-    public List<Order> list();
+    public List<Order> list(@Param("uid") int uid, @Param("status") Integer status);
 }

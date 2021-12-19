@@ -5,7 +5,10 @@
 <mapper namespace="com.mall.demo.mapper.OrderMapper">
 
     <select id="list" resultType="com.mall.demo.bean.Order">
-        SELECT * FROM mall.order;
+        SELECT * FROM mall.order where uid=#{uid}
+        <if test="status!=null">
+            and status=#{status}
+        </if>
     </select>
     <insert id="add" useGeneratedKeys="true">
 <!--        insert into mall.order(orderItem, orderTime, uid, status) values(#{orderItem, jdbcType=OTHER}, #{orderTime}, #{uid}, #{status});-->

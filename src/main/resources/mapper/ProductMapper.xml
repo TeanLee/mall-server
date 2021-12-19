@@ -22,4 +22,7 @@
     <select id="getProductsByCategoryId" resultMap="allProduct">
         SELECT * FROM mall.product where categoryId = #{id};
     </select>
+    <select id="getProductById" resultType="com.mall.demo.bean.Product">
+        SELECT * FROM mall.product where productId = #{productId};
+    </select>
 </mapper>

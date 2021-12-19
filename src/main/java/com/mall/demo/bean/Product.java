@@ -2,7 +2,9 @@ package com.mall.demo.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @AllArgsConstructor //全参构造函数
 @NoArgsConstructor  //无参构造函数
 public class Product {
