@@ -37,7 +37,7 @@ public class ShoppingCartController {
 
     @ResponseBody
     @DeleteMapping("/delete")
-    public void deleteByProductId(int productId) {
+    public void deleteByProductId(Integer productId) {
         shoppingCartService.deleteByProductId(productId);
     }
 
