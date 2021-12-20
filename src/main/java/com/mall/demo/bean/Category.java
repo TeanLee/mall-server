@@ -6,18 +6,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor //全参构造函数
 @NoArgsConstructor  //无参构造函数
 public class Category {
-    private int catagoryId;
+    private int categoryId;
     private String category;
     private String icon;
     private String color;
     private String name;
 
-    public int getCatagoryId() {
-        return catagoryId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagoryId(int catagoryId) {
-        this.catagoryId = catagoryId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategory() {

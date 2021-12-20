@@ -8,7 +8,7 @@
         SELECT * FROM mall.category;
     </select>
     <resultMap id="allCategories" type="com.mall.demo.bean.Category">
-        <id column="catagoryId" property="catagoryId" />
+        <id column="categoryId" property="categoryId" />
         <result column="category" property="category" />
         <result column="icon" property="icon" />
         <result column="color" property="color" />
