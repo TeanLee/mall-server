@@ -26,4 +26,10 @@ public class ProductController {
     public List<Product> getProductsByCategoryId(@RequestParam("categoryId") int id) {
         return productService.getProductsByCategoryId(id);
     }
+
+    @ResponseBody
+    @GetMapping("/{productId}")
+    public Product getProductById(@PathVariable("productId") int id) {
+        return productService.getProductById(id);
+    }
 }
