@@ -26,10 +26,12 @@
 -   **Mysql 5.7 +**  (*尽量保证使用 5.7 版本以上，因为 5.7 版本加了一些新特性，同时不向下兼容。本 demo 里会尽量避免这种不兼容的地方，但还是建议尽量保证 5.7 版本以上*)
 
 ## 运行方式
-1.  `git clone https://github.com/TeanLee/mall-server.git`
-1.  使用 IDEA 打开 clone 下来的项目
-1.  在 IDEA 中 Maven Projects 的面板导入项目根目录下 的 `pom.xml` 文件
-1.  Maven Projects 找不到的同学，可以勾上 IDEA 顶部工具栏的 View -> Tool Buttons ，然后 Maven Projects 的面板就会出现在 IDEA 的右侧
+1. `git clone https://github.com/TeanLee/mall-server.git`
+2. 使用 IDEA 打开 clone 下来的项目
+3. 在 IDEA 中 Maven Projects 的面板导入项目根目录下 的 `pom.xml` 文件
+4. Maven Projects 找不到的同学，可以勾上 IDEA 顶部工具栏的 View -> Tool Buttons ，然后 Maven Projects 的面板就会出现在 IDEA 的右侧
+5. 执行 mall-server 的数据库文件，创建数据库
+6. 修改 application.yaml 中的数据库 url、username、password（改为自己的数据库地址、用户名和密码）
 
 ### 技术选型
 
