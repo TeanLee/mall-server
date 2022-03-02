@@ -10,19 +10,19 @@
         SELECT * FROM mall.product;
     </select>
     <resultMap id="allProduct" type="com.mall.demo.bean.Product">
-        <id column="productId" property="productId" />
+        <id column="product_id" property="productId" />
         <result column="title" property="title" />
-        <result column="subTitle" property="subTitle" />
+        <result column="sub_title" property="subTitle" />
         <result column="banner" property="banner" />
         <result column="price" property="price" />
-        <result column="oldPrice" property="oldPrice" />
-        <result column="categoryId" property="categoryId" />
+        <result column="old_price" property="oldPrice" />
+        <result column="category_id" property="categoryId" />
         <result column="unit" property="unit" />
     </resultMap>
     <select id="getProductsByCategoryId" resultMap="allProduct">
-        SELECT * FROM mall.product where categoryId = #{id};
+        SELECT * FROM mall.product where category_id = #{id};
     </select>
     <select id="getProductById" resultType="com.mall.demo.bean.Product">
-        SELECT * FROM mall.product where productId = #{productId};
+        SELECT * FROM mall.product where product_id = #{productId};
     </select>
 </mapper>

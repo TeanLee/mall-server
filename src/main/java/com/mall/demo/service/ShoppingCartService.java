@@ -46,6 +46,7 @@ public class ShoppingCartService {
 
     public List<ShoppingCart> getShoppingCartByUid() {
         int uid = user.getUid();
+        List products =  shoppingCartMapper.getShoppingCartByUid(uid);
         return shoppingCartMapper.getShoppingCartByUid(uid);
     }
 }

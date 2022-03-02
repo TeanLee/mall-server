@@ -7,32 +7,44 @@
 
     <!--    id 要和 mapper 中声明的方法名一致，返回值类型也要和声明的类型保持一致-->
     <select id="getShoppingCart" resultMap="allShoppingCart">
-        SELECT * FROM mall.ShoppingCart;
+        SELECT * FROM mall.shopping_cart;
     </select>
     <resultMap id="allShoppingCart" type="com.mall.demo.bean.ShoppingCart">
-        <id column="cartId" property="cartId" />
+        <id column="cart_id" property="cartId" />
         <result column="uid" property="uid" />
-        <result column="productId" property="productId" />
+        <result column="product_id" property="productId" />
         <result column="count" property="count" />
-        <result column="hasBought" property="hasBought" />
+        <result column="has_bought" property="hasBought" />
+    </resultMap>
+    <resultMap id="allShoppingCartProducts" type="java.util.LinkedHashMap">
+        <result column="banner" property="banner" />
+        <result column="cart_id" property="cartId" />
+        <result column="category_id" property="categoryId" />
+        <result column="old_price" property="oldPrice" />
+        <result column="price" property="price" />
+        <result column="product_id" property="productId" />
+        <result column="sub_title" property="subTitle" />
+        <result column="title" property="title" />
+        <result column="uid" property="uid" />
+        <result column="unit" property="unit" />
     </resultMap>
     <select id="getByProductId" resultMap="allShoppingCart">
-        SELECT * FROM mall.ShoppingCart where productId=#{productId} and uid=#{uid};
+        SELECT * FROM mall.shopping_cart where product_id=#{productId} and uid=#{uid};
 <!--        SELECT * FROM mall.ShoppingCart where productId=#{productId};-->
     </select>
     <insert id="add" useGeneratedKeys="true">
-        insert into mall.ShoppingCart(uid, productId, count) values(#{uid}, #{productId}, 1)
+        insert into mall.shopping_cart(uid, product_id, count) values(#{uid}, #{productId}, 1)
     </insert>
     <update id="updateCount">
-        update mall.ShoppingCart set count=count+1 where productId=#{productId} and uid=#{uid};
+        update mall.shopping_cart set count=count+1 where product_id=#{productId} and uid=#{uid};
     </update>
     <update id="cutCount">
-        update mall.ShoppingCart set count=count-1 where productId=#{productId} and uid=#{uid};
+        update mall.shopping_cart set count=count-1 where product_id=#{productId} and uid=#{uid};
     </update>
     <delete id="deleteByProductId">
-        delete FROM mall.ShoppingCart where productId=#{productId} and uid=#{uid};
+        delete FROM mall.shopping_cart where product_id=#{productId} and uid=#{uid};
     </delete>
-    <select id="getShoppingCartByUid" resultType="java.util.LinkedHashMap">
-        SELECT * FROM mall.ShoppingCart s,mall.product p where s.productId=p.productId and uid=#{uid};
+    <select id="getShoppingCartByUid" resultMap="allShoppingCartProducts">
+        SELECT * FROM mall.shopping_cart s,mall.product p where s.product_id=p.product_id and uid=#{uid};
     </select>
 </mapper>

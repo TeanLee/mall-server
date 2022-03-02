@@ -7,6 +7,10 @@ spring:
       max-http-header-size: 10240000
       max-http-post-size: 10240000
 
+server:
+  #端口号
+  port: 8888
+
 
 mybatis:
   # 可以不写全局配置文件，所有全局配置文件的配置都放在configuration配置项中了。
