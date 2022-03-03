@@ -1,15 +1,18 @@
 package com.mall.demo.controller;
 
-import com.mall.demo.bean.Product;
 import com.mall.demo.bean.ShoppingCart;
-import com.mall.demo.bean.User;
 import com.mall.demo.service.ShoppingCartService;
+import com.mall.demo.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import redis.clients.jedis.Jedis;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 @RequestMapping("/shopping-cart")
@@ -27,6 +30,27 @@ public class ShoppingCartController {
         ShoppingCart shoppingCart = shoppingCartService.getByProductId(productId);
         if (shoppingCart == null) shoppingCartService.add(productId);
         else shoppingCartService.updateCount(productId);
+
+        // 对于加购的商品，将 productId 等记录在 redis 中
+        Jedis jedis = RedisUtil.getConnecttion();
+
+
+        // 通过有序集合 zset 实现点击量的统计
+        Double score = jedis.zscore("products", "productId-" + productId);
+        if (score == null) {
+            jedis.zadd("products", 1, "productId-" + productId);
+        } else {
+            jedis.zincrby("products", 1, "productId-" + productId);
+        }
+
+
+//        Set productsSet = jedis.zrevrange("products", 0 , 10);
+//
+//        for(Object value: productsSet){
+//            System.out.println(value + "------" + jedis.zscore("products", (String) value));
+//        }
+
+        jedis.close();
     }
 
     @ResponseBody
