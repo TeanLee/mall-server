@@ -11,8 +11,8 @@
         </if>
     </select>
     <insert id="add" useGeneratedKeys="true">
-<!--        insert into mall.order(orderItem, orderTime, uid, status) values(#{orderItem, jdbcType=OTHER}, #{orderTime}, #{uid}, #{status});-->
-        insert into mall.order(orderItem, orderTime, uid, status) values(#{orderItem}, #{orderTime}, #{uid}, #{status});
+<!--        insert into mall.order(, orderTime, uid, status) values(#{orderItem, jdbcType=OTHER}, #{orderTime}, #{uid}, #{status});-->
+        insert into mall.order(order_item, order_time, uid, status) values(#{orderItem}, #{orderTime}, #{uid}, #{status});
     </insert>
     <resultMap id="allCategories" type="com.mall.demo.bean.Category">
         <id column="category_id" property="categoryId" />
@@ -23,10 +23,10 @@
     </resultMap>
     <!--    id 要和 mapper 中声明的方法名一致，返回值类型也要和声明的类型保持一致-->
     <select id="getCategoryById" resultType="com.mall.demo.bean.Category">
-        SELECT * FROM mall.category where categoryId=#{id};
+        SELECT * FROM mall.category where category_id=#{id};
     </select>
 
     <update id="updateStatus">
-        update mall.order set status=#{status} where uid=#{uid} and orderId=#{orderId}
+        update mall.order set status=#{status} where uid=#{uid} and order_id=#{orderId}
     </update>
 </mapper>
